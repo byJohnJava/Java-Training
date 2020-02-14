@@ -14,39 +14,11 @@ public class Locadora {
 
 	static Carro vetorCarro[];
 
-	public static void busca() {
-		int escolha;
-		do {
-			escolha = Integer.parseInt(JOptionPane.showInputDialog(
-					"Informe o qual a forma de busca: \n 1- para buscar por modelo \n 2 - para buscar por velocidade \n 3 - para buscar por combustivel \n 4 - para buscar por Cor \n 5 - para exibir um relatório em Ordem Descrecente \n 6 - para compra \n 9 - finalizar"));
-			switch (escolha) {
-			case 1:
-				buscaModelo();
-				break;
-			case 2:
-				buscaVelocidade();
-				break;
-			case 3:
-				buscaCombustivel();
-				break;
-			case 4:
-				buscaCor();
-				break;
-			case 5:
-				exibirValoresOrdemDecrescente();
-				break;
-			case 6:
-				compra();
-			case 9:
-//		default:
-//			JOptionPane.showMessageDialog(null, "Código Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+	static boolean exit = false;
 
-			}
+	public static void buscarModelo() {
 
-		} while (escolha != 9);
-	}
-
-	public static void buscaModelo() {
+		String todosCarros = " ";
 
 		boolean verificaRegistros = false;
 
@@ -54,14 +26,10 @@ public class Locadora {
 		for (int i = 0; i < vetorCarro.length; i++) {
 			if (vetorCarro[i].modeloDoCarro.toUpperCase().equals(modelo)) {
 
-				System.out.println("Modelo do carro: " + vetorCarro[i].modeloDoCarro);
-				System.out.println("Placa: " + vetorCarro[i].placaDoCarro);
-				System.out.println("Velocidade máxima: " + vetorCarro[i].velocidadeMaxima);
-				System.out.println("Tipo de combustível: " + vetorCarro[i].combustivel);
-				System.out.printf("Valor do carro: %.3f ", vetorCarro[i].valor);
-				System.out.println("Cor do carro: " + vetorCarro[i].cor);
-
-				System.out.print("\n");
+				todosCarros = todosCarros + " \n\n Modelo do carro: " + vetorCarro[i].modeloDoCarro + "\n" + "Placa: "
+						+ vetorCarro[i].placaDoCarro + "\n" + "Velocidade máxima: " + vetorCarro[i].velocidadeMaxima
+						+ "\n" + "Tipo de combustível: " + vetorCarro[i].combustivel + "\n" + "Valor do carro: R$ "
+						+ vetorCarro[i].valor + "\n" + "Cor do carro: " + vetorCarro[i].cor;
 
 				verificaRegistros = true;
 
@@ -70,12 +38,15 @@ public class Locadora {
 
 		if (!verificaRegistros) {
 			JOptionPane.showMessageDialog(null, "O carro informado não existe ou ainda não foi cadastrado");
+		} else {
+			JOptionPane.showMessageDialog(null, todosCarros);
 		}
-
 	}
 
-	public static void buscaVelocidade() {
+	public static void buscarVelocidade() {
 
+		String todosCarros = " ";
+		int contCarro = 1;
 		boolean verificaRegistros = false;
 
 		int velocidade = Integer.parseInt(JOptionPane.showInputDialog("Informe a velocidade do carro: "));
@@ -83,12 +54,11 @@ public class Locadora {
 
 			if (vetorCarro[i].velocidadeMaxima == velocidade) {
 
-				System.out.println("Modelo do carro: " + vetorCarro[i].modeloDoCarro);
-				System.out.println("Placa: " + vetorCarro[i].placaDoCarro);
-				System.out.println("Velocidade máxima: " + vetorCarro[i].velocidadeMaxima);
-				System.out.println("Tipo de combustível: " + vetorCarro[i].combustivel);
-				System.out.printf("Valor do carro: %.3f ", vetorCarro[i].valor);
-				System.out.println("Cor do carro: " + vetorCarro[i].cor);
+				todosCarros = todosCarros + " \n Carro Nº " + contCarro++ + " \n Modelo do carro: "
+						+ vetorCarro[i].modeloDoCarro + "\n" + "Placa: " + vetorCarro[i].placaDoCarro + "\n"
+						+ "Velocidade máxima: " + vetorCarro[i].velocidadeMaxima + "\n" + "Tipo de combustível: "
+						+ vetorCarro[i].combustivel + "\n" + "Valor do carro: R$ " + vetorCarro[i].valor + "\n"
+						+ "Cor do carro: " + vetorCarro[i].cor;
 
 				System.out.println("\n");
 
@@ -98,23 +68,26 @@ public class Locadora {
 		}
 		if (!verificaRegistros) {
 			JOptionPane.showMessageDialog(null, "O carro informado não existe ou ainda não foi cadastrado");
+		} else {
+			JOptionPane.showMessageDialog(null, todosCarros);
 		}
 	}
 
-	public static void buscaCombustivel() {
+	public static void buscarCombustivel() {
 
+		String todosCarros = " ";
+		int contCarro = 1;
 		boolean verificaRegistros = false;
 
 		String combustivel = JOptionPane.showInputDialog("Informe o tipo de combustível do carro: ").toUpperCase();
 		for (int i = 0; i < vetorCarro.length; i++) {
 			if (vetorCarro[i].combustivel.toUpperCase().equals(combustivel)) {
 
-				System.out.println("Modelo do carro: " + vetorCarro[i].modeloDoCarro);
-				System.out.println("Placa: " + vetorCarro[i].placaDoCarro);
-				System.out.println("Velocidade máxima: " + vetorCarro[i].velocidadeMaxima);
-				System.out.println("Tipo de combustível: " + vetorCarro[i].combustivel);
-				System.out.printf("Valor do carro: %.3f ", vetorCarro[i].valor);
-				System.out.println("Cor do carro: " + vetorCarro[i].cor);
+				todosCarros = todosCarros + " \n Carro Nº " + contCarro++ + " \n Modelo do carro: "
+						+ vetorCarro[i].modeloDoCarro + "\n" + "Placa: " + vetorCarro[i].placaDoCarro + "\n"
+						+ "Velocidade máxima: " + vetorCarro[i].velocidadeMaxima + "\n" + "Tipo de combustível: "
+						+ vetorCarro[i].combustivel + "\n" + "Valor do carro: R$ " + vetorCarro[i].valor + "\n"
+						+ "Cor do carro: " + vetorCarro[i].cor;
 
 				System.out.println("\n");
 
@@ -124,10 +97,14 @@ public class Locadora {
 		}
 		if (!verificaRegistros) {
 			JOptionPane.showMessageDialog(null, "O carro informado não existe ou ainda não foi cadastrado");
+		} else {
+			JOptionPane.showMessageDialog(null, todosCarros);
 		}
 	}
 
 	public static void exibirValoresOrdemDecrescente() {
+
+		String todosCarros = " ";
 
 		for (int i = 0; i < vetorCarro.length; i++) {
 			for (int j = 0; j < vetorCarro.length; j++) {
@@ -141,18 +118,64 @@ public class Locadora {
 
 		for (int i = 0; i < vetorCarro.length; i++) {
 
-			System.out.println("Modelo do carro: " + vetorCarro[i].modeloDoCarro);
-			System.out.println("Placa: " + vetorCarro[i].placaDoCarro);
-			System.out.println("Velocidade máxima: " + vetorCarro[i].velocidadeMaxima);
-			System.out.println("Tipo de combustível: " + vetorCarro[i].combustivel);
-			System.out.printf("Valor do carro: %.3f \n", vetorCarro[i].valor);
-			System.out.println("Cor do carro: " + vetorCarro[i].cor);
-
-			System.out.println("");
+			todosCarros = todosCarros + " \n\n Modelo do carro: " + vetorCarro[i].modeloDoCarro + "\n" + "Placa: "
+					+ vetorCarro[i].placaDoCarro + "\n" + "Velocidade máxima: " + vetorCarro[i].velocidadeMaxima + "\n"
+					+ "Tipo de combustível: " + vetorCarro[i].combustivel + "\n" + "Valor do carro: R$ "
+					+ vetorCarro[i].valor + "\n" + "Cor do carro: " + vetorCarro[i].cor;
 
 		}
 
+		JOptionPane.showMessageDialog(null, todosCarros);
+
 	}
+
+	public static void repeticao() {
+		while (!exit) {
+			processar();
+		}
+	}
+
+	public static void processar() {
+		
+		while (!exit)
+		try {
+			int opcao = Integer.parseInt(JOptionPane.showInputDialog(
+					"Informe qual a forma de busca: \n 1 - para buscar por modelo \n 2 - para buscar por velocidade \n 3 - para buscar por combustivel \n 4 - para buscar por Cor \n 5 - para exibir um relatório em Ordem Descrecente \n 6 - para compra \n 9 - finalizar"));
+
+			switch (opcao) {
+			case 1:
+				buscarModelo();
+				break;
+			case 2:
+				buscarVelocidade();
+				break;
+			case 3:
+				buscarCombustivel();
+				break;
+			case 4:
+				buscaCor();
+				break;
+			case 5:
+				exibirValoresOrdemDecrescente();
+				break;
+			case 6:
+				comprarCarro();
+			case 9:
+				exit = true;
+				break;
+			default:
+				JOptionPane.showMessageDialog(null, "Opção Inválida");
+				break;
+			}
+
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Entrada Inválida, Entre apenas com números", "Erro",
+					JOptionPane.ERROR_MESSAGE);
+			processar();
+		}
+		
+	}
+
 
 	public static void exibirValoresOrdemCrescente() {
 
@@ -170,50 +193,20 @@ public class Locadora {
 
 	public static void buscaCor() {
 
+		String todosCarros = " ";
+		int contCarro = 1;
 		boolean verificaRegistros = false;
 
 		String cor = JOptionPane.showInputDialog("Informe a cor desejada: ").toUpperCase();
 		for (int i = 0; i < vetorCarro.length; i++) {
 			if (vetorCarro[i].cor.toUpperCase().equals(cor)) {
 
-				System.out.println("Modelo do carro: " + vetorCarro[i].modeloDoCarro);
-				System.out.println("Placa: " + vetorCarro[i].placaDoCarro);
-				System.out.println("Velocidade máxima: " + vetorCarro[i].velocidadeMaxima);
-				System.out.println("Tipo de combustível: " + vetorCarro[i].combustivel);
-				System.out.printf("Valor do carro: %.3f \n", vetorCarro[i].valor);
-				System.out.println("Cor do carro: " + vetorCarro[i].cor);
+				todosCarros = todosCarros + " \n Carro Nº " + contCarro++ + " \n Modelo do carro: "
+						+ vetorCarro[i].modeloDoCarro + "\n" + "Placa: " + vetorCarro[i].placaDoCarro + "\n"
+						+ "Velocidade máxima: " + vetorCarro[i].velocidadeMaxima + "\n" + "Tipo de combustível: "
+						+ vetorCarro[i].combustivel + "\n" + "Valor do carro: R$ " + vetorCarro[i].valor + "\n"
+						+ "Cor do carro: " + vetorCarro[i].cor;
 
-				System.out.print("\n");
-
-				verificaRegistros = true;
-
-			}
-		}
-		if (!verificaRegistros) {
-			JOptionPane.showMessageDialog(null, "O carro informado não existe ou ainda não foi cadastrado");
-
-		}
-	}
-
-	public static void compra() {
-		
-		String todosCarros = " ";
-		int contCarro = 1;
-
-		boolean verificaRegistros = false;
-
-		String modelo = JOptionPane.showInputDialog("Informe o modelo do carro: ").toUpperCase();
-		String cor = JOptionPane.showInputDialog("Informe a cor desejada: ").toUpperCase();
-		
-		exibirValoresOrdemCrescente();
-		
-		for (int i = 0; i < vetorCarro.length; i++) {
-			if (vetorCarro[i].modeloDoCarro.toUpperCase().equals(modelo)
-					&& vetorCarro[i].cor.toUpperCase().equals(cor)) {
-				
-				// Verifica se existe o carro pesquisado pelo usuário e atribui a String todosCarros e repete e concatena caso já existe algum valor atribuído a String todosCarros. 
-				todosCarros = todosCarros + " \n Carro Nº " + contCarro++ + " \n Modelo do carro: " + vetorCarro[i].modeloDoCarro + "\n" + "Placa: " + vetorCarro[i].placaDoCarro + "\n" + "Velocidade máxima: " + vetorCarro[i].velocidadeMaxima + "\n" + "Tipo de combustível: " + vetorCarro[i].combustivel + "\n" + "Valor do carro: R$ " + vetorCarro[i].valor + "\n" + "Cor do carro: " + vetorCarro[i].cor;
-				
 				System.out.print("\n");
 
 				verificaRegistros = true;
@@ -225,6 +218,67 @@ public class Locadora {
 		} else {
 			JOptionPane.showMessageDialog(null, todosCarros);
 		}
+	}
+
+	public static void comprarCarro() {
+		
+		int aux = 1;
+		String todosCarros = " ";
+		Carro contCarro[] = new Carro[30];
+
+		boolean verificaRegistros = false;
+
+		String modelo = JOptionPane.showInputDialog("Informe o modelo do carro: ").toUpperCase();
+		String cor = JOptionPane.showInputDialog("Informe a cor desejada: ").toUpperCase();
+
+		exibirValoresOrdemCrescente();
+
+		for (int i = 0; i < vetorCarro.length; i++) {
+			if (vetorCarro[i].modeloDoCarro.toUpperCase().equals(modelo)
+					&& vetorCarro[i].cor.toUpperCase().equals(cor)) {
+				
+				contCarro[aux] = vetorCarro[i];
+				
+				
+				verificaRegistros = true;
+				
+				// Verifica se existe o carro pesquisado pelo usuário e atribui a String
+				// todosCarros e repete e concatena caso já existe algum valor atribuído a
+				// String todosCarros.
+			todosCarros = todosCarros + " \n Carro Nº " + aux + " \n Modelo do carro: "
+						+ vetorCarro[i].modeloDoCarro + "\n" + "Placa: " + vetorCarro[i].placaDoCarro + "\n"
+						+ "Velocidade máxima: " + vetorCarro[i].velocidadeMaxima + "\n" + "Tipo de combustível: "
+						+ vetorCarro[i].combustivel + "\n" + "Valor do carro: R$ " + vetorCarro[i].valor + "\n"
+						+ " \n Cor do carro: " + vetorCarro[i].cor;
+			
+			aux++;
+			}
+		}
+	
+			 
+	if(!verificaRegistros)
+				{
+					JOptionPane.showMessageDialog(null, "O carro informado não existe ou ainda não foi cadastrado");
+				}else
+				{
+					
+					String opcaoCompra = "";
+					JOptionPane.showMessageDialog(null, todosCarros);
+					JOptionPane.showInputDialog("Deseja comprar o carro? (S/N)").toUpperCase();
+					if (opcaoCompra.equals("S")) {
+						int opcaoCarroCompra =Integer.parseInt(JOptionPane.showInputDialog("Informe o número do carro que deseja comprar: "));
+						if(opcaoCarroCompra == aux){
+							System.out.println("Comprou");
+							
+						}
+					}
+		}
+	}
+
+	public void calculaCompra() {
+
+//		double total = vetorCarro[1]
+//		int valorPago = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor pago pelo cliente: "));
 
 	}
 
@@ -254,7 +308,7 @@ public class Locadora {
 		vetorCarro[8] = carro9;
 		vetorCarro[9] = carro10;
 
-		busca();
+		processar();
 
 	}
 }
