@@ -225,7 +225,7 @@ public class Locadora {
 		int aux = 1;
 		String todosCarros = " ";
 		Carro contCarro[] = new Carro[30];
-
+		boolean vendido;
 		boolean verificaRegistros = false;
 
 		String modelo = JOptionPane.showInputDialog("Informe o modelo do carro: ").toUpperCase();
@@ -266,21 +266,24 @@ public class Locadora {
 					JOptionPane.showMessageDialog(null, todosCarros);
 					JOptionPane.showInputDialog("Deseja comprar o carro? (S/N)").toUpperCase();
 					if (opcaoCompra.equals("S")) {
-						int opcaoCarroCompra =Integer.parseInt(JOptionPane.showInputDialog("Informe o número do carro que deseja comprar: "));
+						int opcaoCarroCompra = Integer.parseInt(JOptionPane.showInputDialog("Informe o número do carro que deseja comprar: "));
 						if(opcaoCarroCompra == aux){
-							System.out.println("Comprou");
+							double valorPago Integer.parseInt(JOptionPane.showInputDialog("Digite o valor: "));
+							if(contCarro[aux].valor > valorPago) {
+								
+							}
 							
 						}
 					}
 		}
 	}
 
-	public void calculaCompra() {
 
-//		double total = vetorCarro[1]
-//		int valorPago = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor pago pelo cliente: "));
+		
+		
 
-	}
+
+
 
 	public static void main(String[] args) {
 
