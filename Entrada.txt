@@ -1,0 +1,6 @@
+private JFrame janela;
+	private JPanel painelDaJanela;
+	private JPanel painel1;
+	private JPanel painel2;
+	private JPanel painel3;
+	private JPanel painel4;

@@ -1,14 +1,12 @@
 package exec6;
 
-
 import java.time.Year;
 
-import org.joda.time.Days;
+import javax.swing.JOptionPane;
 
 
 /**
  * Classe Aluno
- * 
  * @author jaraujo 
  * @since 12/02/2020 
  * @version 0.1
@@ -51,8 +49,20 @@ public class Aluno {
 
 	}
 
-	public int diasVida() {
+	public void diasVida() {
 		
+		String dataCompleta = JOptionPane.showInputDialog("Informe a data de nascimento: ");
+		String data[] = dataCompleta.split("/");
+		int ano = Integer.parseInt(data[2]);
+		int mes = Integer.parseInt(data[1]);
+		int dia = Integer.parseInt(data[0]);
+		
+		
+		String dataCompletaAtual = new java.text.SimpleDateFormat("dd/MM/yyyy").format(new org.joda.time.DateTime(System.currentTimeMillis()));
+		String dataAtual[] = dataCompletaAtual.split("/");
+		int anoAtual = Integer.parseInt(dataAtual[2]);
+		int mesAtual = Integer.parseInt(dataAtual[1]);
+		int diaAtual = Integer.parseInt(dataAtual[0]);
 	
 	}
 
@@ -71,7 +81,6 @@ public class Aluno {
 		System.out.println(cidade);
 		System.out.println(calculaIdade());
 		System.out.println(calcularIdadeData());
-		System.out.println(diasVida());
 	}
 
 }

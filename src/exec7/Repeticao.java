@@ -1,13 +1,15 @@
 package exec7;
 
-import javax.swing.JOptionPane;
-
 /**
- * 
+ * Classe para testes de repetição
  * @author jaraujo
  * @since 14/02/2020
  * @version 0.1
  */
+
+import javax.swing.JOptionPane;
+
+
 
 public class Repeticao {
 

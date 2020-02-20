@@ -21,7 +21,7 @@ public class Vetor {
 		quantidade[0] = 10;
 		quantidade[3] = 4;
 		
-		
+		//exibe a referência de memória do vetor
 		System.out.println("Valor do vetor: " + quantidade);
 		
 		for (int i = 0; i < quantidade.length; i++ ) {
